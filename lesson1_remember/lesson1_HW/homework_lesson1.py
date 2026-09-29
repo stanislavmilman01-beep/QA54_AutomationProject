@@ -1,7 +1,4 @@
 #task 1 clean_name
-from xmlrpc.client import FastParser
-
-
 def clean_name(name):
     return name.strip().title()
 
