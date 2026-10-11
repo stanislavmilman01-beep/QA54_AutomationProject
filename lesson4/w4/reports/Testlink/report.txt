@@ -1,0 +1,6 @@
+Project: Testlink
+Tester: Stas
+Passed tests: 88
+Failed tests: 22
+Total tests: 110
+Status: failed

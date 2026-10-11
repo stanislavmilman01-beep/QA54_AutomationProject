@@ -1,0 +1,5 @@
+{
+    "environment": "prod",
+    "base_url": "https://prod.example.com",
+    "timeout": 60
+}
