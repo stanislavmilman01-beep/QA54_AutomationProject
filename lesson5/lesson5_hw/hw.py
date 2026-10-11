@@ -8,7 +8,6 @@
 Используйте: def, return, for, list, append(), with open(), режимы w, a, r, strip().
 Проверьте пустой список, повторное добавление записи и чтение файла с пустыми строками.
 '''
-from tkinter.constants import BROWSE
 
 # def save_test_id(test_ids):
 #     if type(test_ids) != list or not test_ids:
@@ -131,17 +130,17 @@ def load_test_config(filename):
 save_test_config("staging", "https://example.com", 30)
 config = load_test_config("config.json")
 
-# данные совпадают с ожидаемыми
+
 assert config == {
     "environment": "staging",
     "base_url": "https://example.com",
     "timeout": 30
 }, f"Unexpected config: {config}"
 
-# 4. timeout после загрузки остался int
+
 assert type(config["timeout"]) is int, f"timeout is {type(config['timeout'])}"
 
-# повторное сохранение заменяет старую конфигурацию
+
 save_test_config("prod", "https://prod.example.com", 60)
 config = load_test_config("config.json")
 
