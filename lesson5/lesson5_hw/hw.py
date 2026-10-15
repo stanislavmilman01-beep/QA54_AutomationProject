@@ -65,6 +65,7 @@ QA-1003,PASSED,150
 
 '''
 import csv
+import pprint
 
 def get_test_statistics(filename):
     stats = {
@@ -85,7 +86,9 @@ def get_test_statistics(filename):
                 stats["failed_ids"].append(row["test_id"])
     return stats
 
-print(get_test_statistics('results.csv'))
+print(get_test_statistics("results.csv"))
+
+#print(get_test_statistics('result_blank.csv'))
 
 '''
 Напишите две функции:
@@ -112,41 +115,41 @@ save_test_config(
 Используйте: dict, json.dump(), json.load(), with open(), type(), assert.
 '''
 
-import json
-
-def save_test_config(environment, base_url, timeout):
-    config = {
-        "environment": environment,
-        "base_url": base_url,
-        "timeout": timeout
-    }
-    with open('config.json', 'w', encoding='utf-8') as file:
-        json.dump(config, file, indent=2)
-
-def load_test_config(filename):
-    with open(filename, 'r', encoding='utf-8') as file:
-        return json.load(file)
-
-save_test_config("staging", "https://example.com", 30)
-config = load_test_config("config.json")
-
-
-assert config == {
-    "environment": "staging",
-    "base_url": "https://example.com",
-    "timeout": 30
-}, f"Unexpected config: {config}"
-
-
-assert type(config["timeout"]) is int, f"timeout is {type(config['timeout'])}"
-
-
-save_test_config("prod", "https://prod.example.com", 60)
-config = load_test_config("config.json")
-
-assert config["environment"] == "prod"
-assert config["base_url"] == "https://prod.example.com"
-assert config["timeout"] == 60
-assert len(config) == 3, "Old data was not replaced"
-
-print("All checks passed")
+# import json
+#
+# def save_test_config(environment, base_url, timeout):
+#     config = {
+#         "environment": environment,
+#         "base_url": base_url,
+#         "timeout": timeout
+#     }
+#     with open('config.json', 'w', encoding='utf-8') as file:
+#         json.dump(config, file, indent=2)
+#
+# def load_test_config(filename):
+#     with open(filename, 'r', encoding='utf-8') as file:
+#         return json.load(file)
+#
+# save_test_config("staging", "https://example.com", 30)
+# config = load_test_config("config.json")
+#
+#
+# assert config == {
+#     "environment": "staging",
+#     "base_url": "https://example.com",
+#     "timeout": 30
+# }, f"Unexpected config: {config}"
+#
+#
+# assert type(config["timeout"]) is int, f"timeout is {type(config['timeout'])}"
+#
+#
+# save_test_config("prod", "https://prod.example.com", 60)
+# config = load_test_config("config.json")
+#
+# assert config["environment"] == "prod"
+# assert config["base_url"] == "https://prod.example.com"
+# assert config["timeout"] == 60
+# assert len(config) == 3, "Old data was not replaced"
+#
+# print("All checks passed")
